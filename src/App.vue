@@ -23,6 +23,9 @@
                 >Login with Google</b-button
               >
             </div>
+            <div class="navbar-item">
+              <b-button type="is-danger" @click="logout()">Logout</b-button>
+            </div>
           </div>
         </div>
       </div>
@@ -35,7 +38,7 @@
 import { mapActions } from "vuex";
 export default {
   name: "Home",
-  methods: mapActions("auth", ["login"]),
+  methods: mapActions("auth", ["login", "logout"]),
 };
 </script>
 

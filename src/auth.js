@@ -1,13 +1,12 @@
 import firebase from "@/firebase";
 import store from "@/store";
-import auth from "@/store/auth";
-import db from "./db";
+import db from "@/db";
 
 firebase.auth().onAuthStateChanged((user) => {
-  if (user.user) {
-    user = user.user;
-  }
   if (user) {
+    if (user.user) {
+      user = user.user;
+    }
     const setUser = {
       id: user.uid,
       name: user.displayName,
@@ -20,5 +19,3 @@ firebase.auth().onAuthStateChanged((user) => {
     store.commit("auth/setUser", null);
   }
 });
-
-export default auth;
