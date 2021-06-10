@@ -1,32 +1,46 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <nav class="navbar is-black">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/#/"> The Farm </a>
+          <div
+            class="navbar-burger"
+            data-target="navbarExampleTransparentExample"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <div class="navbar-start"></div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <b-button type="is-danger" @click="login()"
+                >Login with Google</b-button
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <router-view class="main container" />
   </div>
 </template>
 
+<script>
+import { mapActions } from "vuex";
+export default {
+  name: "Home",
+  methods: mapActions("auth", ["login"]),
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.main {
+  margin-top: 3em !important;
 }
 </style>
