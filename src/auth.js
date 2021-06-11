@@ -1,6 +1,7 @@
 import firebase from "@/firebase";
 import store from "@/store";
 import db from "@/db";
+import Router from "@/router";
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
@@ -15,7 +16,9 @@ firebase.auth().onAuthStateChanged((user) => {
     };
     db.collection("users").doc(setUser.id).set(setUser);
     store.commit("auth/setUser", setUser);
+    Router.push("/subreddits");
   } else {
     store.commit("auth/setUser", null);
+    Router.push("/");
   }
 });
